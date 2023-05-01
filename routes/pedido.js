@@ -1,7 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const cantina = require('../models/cantina');
+const pedido = require('../models/pedido');
 
+// Criar uma nova receita
+// const novaReceita = new Receita({
+//   nome: 'Bolo de cenoura',
+//   ingredientes: ['cenoura', 'açúcar', 'farinha', 'óleo', 'ovos'],
+//   modoDePreparo: 'Bata os ingredientes no liquidificador e leve ao forno por 30 minutos.'
+// });
+
+
+
+router.post('/teste', async (req, res) => {
+  const nomes = req.body.nome;
+
+
+    res.send(nomes+"ok");
+
+});
 router.post('/inserir', async (req, res) => {
   const { nome, preco, descricao} = req.body;
 
@@ -30,19 +46,23 @@ router.post('/create', async (req, res) => {
   }
 });
 
-router.get('/cardapio', async (req, res) => {
+
+
+
+
+router.get('/listapedido', async (req, res) => {
   try {
-    const cantinas = await cantina.find({});
-    res.send(cantinas);
+    const pedidos = await pedido.find({});
+    res.send(pedidos);
   } catch (error) {
     res.status(500).send();
   }
 });
 
-router.get('/cardapio', async (req, res) => {
+router.get('/listapedidos', async (req, res) => {
   try {
-    const cantinas = await cantina.find({});
-    res.send(cantinas);
+    const pedidos = await pedido.find({});
+    res.send(pedidos);
   } catch (error) {
     res.status(500).send();
   }
@@ -50,63 +70,56 @@ router.get('/cardapio', async (req, res) => {
 
 
 // Rota para buscar uma receita específica pelo seu ID
-router.get('/encontrar/:id', async (req, res) => {
+router.get('/encontrarpedido/:id', async (req, res) => {
   const _id  = req.params.id;
 
   try {
-    const cantinas = await cantina.findById(_id);
+    const pedidos = await pedido.findById(_id);
 
-    if (!cantinas) {
+    if (!pedidos) {
       return res.status(404).send();
     }
 
-    res.send(cantinas);
+    res.send(pedidos);
   } catch (error) {
     res.status(500).send();
   }
 });
 
 
-router.post('/okk', async (req, res) => {
-  const nomes = req.body.nome;
-
-
-    res.send(nomes+"ok");
-
-});
 
 
 
 
 // Rota para atualizar uma receita pelo seu ID
-router.patch('/atualizarcardapio/:id', async (req, res) => {
+router.patch('/atualizarpedido/:id', async (req, res) => {
   const _id = req.params.id;
 
   try {
-    const recipe = await cantina.findByIdAndUpdate(_id, req.body, { new: true, runValidators: true });
+    const pedidos = await pedido.findByIdAndUpdate(_id, req.body, { new: true, runValidators: true });
 
-    if (!recipe) {
+    if (!pedidos) {
       return res.status(404).send();
     }
 
-    res.send(recipe);
+    res.send(pedidos);
   } catch (error) {
     res.status(400).send(error);
   }
 });
 
 // Rota para excluir uma receita pelo seu ID
-router.delete('/deletarcardapio/:id', async (req, res) => {
+router.delete('/deletarpedido/:id', async (req, res) => {
   const _id = req.params.id;
 
   try {
-    const recipe = await cantina.findByIdAndDelete(_id);
+    const pedidos = await pedido.findByIdAndDelete(_id);
 
-    if (!recipe) {
+    if (!pedidos) {
       return res.status(404).send();
     }
 
-    res.send(recipe);
+    res.send(pedidos);
   } catch (error) {
     res.status(500).send();
   }

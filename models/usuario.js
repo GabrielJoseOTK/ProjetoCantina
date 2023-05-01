@@ -2,24 +2,27 @@ const mongoose = require('mongoose');
 
 
 // Definindo o schema para o modelo de receita
-const cantinaSchema = new mongoose.Schema({
+const usuarioSchema = new mongoose.Schema({
   nome: {
     type: String,
     required: true,
     trim: true
   },
-  preco: {
+  senha: {
     type: String,
     required: true
   },
-  descricao: {
-  type: String
+  //cliente, ou dono
+  nivel: {
+    type: String,
+    required: true
   },
-  convertRule: Number
+
+
   });
 
 // Criando o modelo de receita
-const cantina = mongoose.model('cardapio', cantinaSchema);
+const usuario = mongoose.model('usuarios', usuarioSchema);
 
 // Exportando o modelo para uso em outras partes da aplicação
-module.exports = cantina;
+module.exports = usuario;
