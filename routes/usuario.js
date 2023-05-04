@@ -36,7 +36,7 @@ router.post('/inserir', async (req, res) => {
   }
 });
 router.post('/create', async (req, res) => {
-  const { nome, senha, nivel} = req.body;
+  const { nome, senha, nivel, login} = req.body;
   try {
     const usuarios = new usuario(req.body);
     await usuarios.save();
@@ -85,6 +85,23 @@ router.get('/encontrar/:id', async (req, res) => {
 
 // Rota para atualizar uma receita pelo seu ID
 router.patch('/atualizardados/:id', async (req, res) => {
+  const _id = req.params.id;
+
+  try {
+    const usuarios = await usuario.findByIdAndUpdate(_id, req.body, { new: true, runValidators: true });
+
+    if (!usuarios) {
+      return res.status(404).send();
+    }
+
+    res.send(usuarios);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
+// Rota para atualizar uma receita pelo seu ID
+router.patch('/logar_deslogar/:id', async (req, res) => {
   const _id = req.params.id;
 
   try {

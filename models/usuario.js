@@ -17,6 +17,10 @@ const usuarioSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  //logado ou não
+  login: {
+    type: String,
+  },
 
 
   });
