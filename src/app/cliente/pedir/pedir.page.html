@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-menu-toggle>
+        <ion-button>
+            <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+        </ion-menu-toggle>
+    </ion-buttons>
+    <ion-title>Cardápio</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class='ion-padding'>
+  
+  <div style="padding: 1em 20% 5% 20%;">
+  <div class="card list-group rounded" *ngFor="let cantinas of cantina">
+      <div class=" text-center">
+        Nome do Lanche: {{ cantinas.nome }}<br>
+        Descrição: {{ cantinas.descricao }}<br>
+        Preço: {{ cantinas.preco }}<br>
+
+        <ion-button [routerLink]="['/fazerpedido',cantinas._id]" class="ion-margin-top" expand="block" color="primary">
+          Fazer Pedido
+        </ion-button>
+    
+  <!--['/home', cliente._id]-->
+      
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+</ion-content>
