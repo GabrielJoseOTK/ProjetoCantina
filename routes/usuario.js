@@ -8,7 +8,7 @@ const usuario = require('../models/usuario');
 //   ingredientes: ['cenoura', 'açúcar', 'farinha', 'óleo', 'ovos'],
 //   modoDePreparo: 'Bata os ingredientes no liquidificador e leve ao forno por 30 minutos.'
 // });
-
+const static = "";
 
 
 router.post('/teste', async (req, res) => {
@@ -131,6 +131,22 @@ router.delete('/deletarusuario/:id', async (req, res) => {
     res.send(usuarios);
   } catch (error) {
     res.status(500).send();
+  }
+});
+
+
+
+router.post('/login_unico', async (req, res) => {
+  try {
+    const { nome, senha } = req.body;
+    const usuarios = await usuario.findOne({ nome, senha });
+    if (!usuarios) {
+      return res.send('Email ou senha incorretos');
+    }
+    res.send(usuarios);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Erro ao fazer login');
   }
 });
 

@@ -19,27 +19,27 @@ router.post('/teste', async (req, res) => {
 
 });
 router.post('/inserir', async (req, res) => {
-  const { nome, preco, descricao} = req.body;
+  const { cliente, descricao, status} = req.body;
 
   try {
-    const novacantina = await cantina.create({
-      nome,
-      preco,
-      descricao
+    const novapedido = await pedido.create({
+      cliente,
+      descricao,
+      status
 
     });
 
-    return res.status(201).json({ cantina });
+    return res.status(201).json({ novapedido });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: 'Internal server error' });
   }
 });
 router.post('/create', async (req, res) => {
-  const { nome, preco, descricao} = req.body;
+  const { cliente, pedido, status} = req.body;
   try {
-    const cardapio = new cantina(req.body);
-    await cardapio.save();
+    const pedidos = new pedido(req.body);
+    await pedidos.save();
     res.status(201).send(cardapio);
   } catch (error) {
     res.status(400).send(error);
@@ -86,6 +86,27 @@ router.get('/encontrarpedido/:id', async (req, res) => {
   }
 });
 
+// Rota para buscar uma receita específica pelo seu ID
+router.get('/pelonome/:cliente', async (req, res) => {
+  const cliente  = req.params.cliente;
+
+  try {
+    let pedidos = await pedido.find(function(pedidos) {
+      return pedidos.cliente === cliente;
+    });
+
+    if (!pedidos) {
+      return res.status(404).send();
+    }
+
+    res.send(pedidos);
+  } catch (error) {
+    res.status(500).send();
+  }
+});
+
+
+
 
 
 
@@ -122,6 +143,20 @@ router.delete('/deletarpedido/:id', async (req, res) => {
     res.send(pedidos);
   } catch (error) {
     res.status(500).send();
+  }
+});
+
+router.post('/pedidosespecificos', async (req, res) => {
+  try {
+    const { status,cliente } = req.body;
+    const pedidos = await pedido.find({ status, cliente });
+    if (!pedidos) {
+      return res.send('Não há');
+    }
+    res.send(pedidos);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Erro');
   }
 });
 

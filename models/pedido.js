@@ -5,22 +5,22 @@ const mongoose = require('mongoose');
 const pedidoSchema = new mongoose.Schema({
   cliente: {
     type: String,
-    required: true,
+
     trim: true
   },
-  pedido: {
+  descricao: {
     type: String,
-    required: true
+
   },
   status: {
     type: String,
-    required: true
+
   },
 
   });
 
 // Criando o modelo de receita
-const pedido = mongoose.model('pedidos', pedidoSchema);
+const pedido = mongoose.model('pedido', pedidoSchema);
 
 // Exportando o modelo para uso em outras partes da aplicação
 module.exports = pedido;
