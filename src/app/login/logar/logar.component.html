@@ -1,0 +1,51 @@
+<main >
+    
+    <h2 class="titulo-pagina">Login</h2>
+    <div style="margin-left:1200px"><a routerLink="/" class="btn btn-primary">Limpar</a></div>
+    
+
+
+    <article class="cartao cartao--destaque destaque-video mr-5">
+
+        <div class="main-login">
+
+
+            <div class="right-login ms-">
+    
+                <div class="text-center ">
+
+                    <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="text-center mt-5" >
+
+                        <div class="textfield" style="margin-top:5%;">
+    
+                        <div class="textfield">
+    
+                        <label >Nome</label>
+                        <input type="text" name="nome" id="nome" [(ngModel)]="nome"  style="color:black" placeholder="Nome" >
+                    
+                        <p>
+                            <label>Senha</label>
+                            <input type="senha" name="senha" id="senha" [(ngModel)]="senha" required placeholder="Senha">
+                            </p>
+                        <p>
+                            <button class="btn btn-primary  mt-3 me-3 " type="submit">LOGIN</button>
+                            <a routerLink="/cadastrar" class="btn btn-primary  mt-3 " type="buttom">CADASTRO</a>
+                            </p>
+
+                        </div>
+                        </div>
+                        <div *ngIf="teste" style="color:red">
+                            calmo fih
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+    </article>
+
+   
+</main>

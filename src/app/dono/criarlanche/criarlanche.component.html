@@ -1,0 +1,73 @@
+<main class="principal">
+    
+    <h2 class="titulo-pagina">Cadastro</h2>
+    <div style="margin-left:1200px"><a routerLink="/cardapio" class="btn btn-primary">Voltar</a></div>
+    
+    
+
+
+    <article class="cartao cartao--destaque destaque-video mr-5" style="padding: 10% 10% 10% 10%;">
+
+        <div class="main-login">
+
+
+            <div class="right-login ms-">
+    
+                <div class="text-center ">
+                    <form #f="ngForm" (ngSubmit)="onSubmit(f)" >
+                        <div class="form-group ">
+                          <label for="exampleInputEmail1">Nome do Lanche</label>
+                          <input class="form-control" type="text" name="nome" id="nome" [(ngModel)]="nome" required placeholder="Nome" aria-describedby="emailHelp" >
+
+                        </div>
+                        <div class="form-group mt-3">
+                          <label for="exampleInputPassword1">Preço</label>
+                          <input class="form-control" type="text" name="preco" id="preco" [(ngModel)]="preco" required placeholder="Preço" >
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="exampleInputPassword1">Descrição do lanche</label>
+                            <input class="form-control"type="text" name="descricao" id="descricao" [(ngModel)]="descricao" required placeholder="Descriçao do Lanche">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                      </form>
+
+                    <!-- <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="text-center mt-5" >
+
+                        <div class="textfield" style="margin-top:5%;">
+    
+                        <div class="textfield">
+                    <p>
+                        <label >Nome do Lanche</label>
+                        <input type="text" name="nome" id="nome" [(ngModel)]="nome" required placeholder="Nome">
+                    </p>
+                        <p>
+                            <label>Preço</label>
+                            <input type="text" name="preco" id="preco" [(ngModel)]="preco" required placeholder="Senha">
+                            
+                        </p>
+                        <p>
+                            <label>Descrição do Lanche</label>
+                            <input type="text" name="descricao" id="descricao" [(ngModel)]="descricao" required placeholder="Senha">
+                            
+                        </p>
+                        <p>
+                            <button  class="btn btn-primary  mt-3 me-3 " type="submit">Cadastrar</button>
+                            
+                            </p>
+
+                        </div>
+                        </div>
+                        
+                    </form> -->
+
+                </div>
+            </div>
+        </div>
+
+
+    </article>
+
+   
+</main>
+

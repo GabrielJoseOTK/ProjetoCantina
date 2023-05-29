@@ -1,6 +1,6 @@
-export class Estoque{
+export class cantina{
 
-    _id:string
+    _id?:string
     nome:string
     preco:string
     descricao:string

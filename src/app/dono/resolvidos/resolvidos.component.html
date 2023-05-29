@@ -1,0 +1,51 @@
+<header>
+    <nav class="navbar navbar-dark bg-dark ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/home">Projeto Cantina</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/cardapio">Cardapio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/resolvidos">Resolvidos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Sair</a>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+      </nav>
+
+</header>
+<main >
+
+<h2 class=" text-center titulo-pagina">Resolvidos </h2>  
+<div style="padding: 1em 20% 5% 20%;">
+<div class="card list-group rounded" *ngFor="let pedidos of pedido">
+    <div class=" text-center" *ngIf="pedidos.status != 'Em andamento'">
+    <a [routerLink]="" class="list-group-item list-group-item-action rounded">
+      Nome Cliente: {{ pedidos.cliente }}<br>
+      Pedido: {{ pedidos.descricao }}<br>
+      Status: {{ pedidos.status }}<br>
+      <a class="btn btn-success " [routerLink]="['/entregar',pedidos._id]" role="button">Entregar</a>
+      <a class="btn btn-danger ms-2" [routerLink]="['/rejeita', pedidos._id]" role="button">Rejeitar</a>
+
+    </a>
+  
+<!--['/home', cliente._id] -->
+    
+  </div>
+</div>
+</div>
+
+</main>
+ 

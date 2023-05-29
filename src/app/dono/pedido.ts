@@ -1,15 +1,15 @@
-export class Estoque{
+export class pedido{
 
-    _id:string
-    cliente:string
-    pedido:string
-    status:string
+    _id?:string
+    cliente?:string
+    descricao?:string
+    status?:string
 
 
-    constructor(_id:string,cliente:string,pedido:string,status:string){
+    constructor(_id:string,cliente:string,descricao:string,status:string){
         this._id = _id,
         this.cliente = cliente,
-        this.pedido= pedido,
+        this.descricao= descricao,
         this.status= status
     }
 

@@ -1,0 +1,53 @@
+<main class="principal">
+    
+    <h2 class="titulo-pagina">Cadastro</h2>
+    <div style="margin-left:1200px"><a routerLink="/" class="btn btn-primary">Voltar</a></div>
+    
+    
+    <article class="cartao cartao--destaque destaque-video">
+
+    </article>
+
+    <article class="cartao cartao--destaque destaque-video mr-5">
+
+        <div class="main-login">
+
+
+            <div class="right-login ms-">
+    
+                <div class="text-center ">
+
+                    <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="text-center mt-5" >
+
+                        <div class="textfield" style="margin-top:5%;">
+    
+                        <div class="textfield">
+    
+                        <label >Nome</label>
+                        <input type="text" name="nome" id="nome" [(ngModel)]="nome" required placeholder="Nome">
+                    
+                        <p>
+                            <label>Senha</label>
+                            <input type="senha" name="senha" id="senha" [(ngModel)]="senha" required placeholder="Senha">
+                            
+                        </p>
+                        <p>
+                            <button  class="btn btn-primary  mt-3 me-3 " type="submit">Cadastrar</button>
+                            
+                            </p>
+
+                        </div>
+                        </div>
+                        
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+    </article>
+
+   
+</main>
+
