@@ -17,6 +17,12 @@ export class DonoserviceService {
     private apiUrl = 'http://localhost:3000/usuario/listausuarios';
     private apiUrl2 = 'http://localhost:3000/pedido/listapedido';
     private apiUrl3 = 'http://localhost:3000/pedido/atualizarpedido';
+    private apiUrl4 = 'http://localhost:3000/pedido//encontrarpedido';
+
+    private Umusuario = 'http://localhost:3000/usuario/encontrar';
+
+
+    private criarnotificaçao = 'http://localhost:3000/notify/create';
     
     private apicantina = 'http://localhost:3000/cantina/cardapio';
     private apiaddlanche = 'http://localhost:3000/cantina/create';
@@ -28,6 +34,15 @@ export class DonoserviceService {
 
     constructor(private http: HttpClient) { }
   
+    getUmUsuario(id:any): Observable<usuario> {
+      return this.http.get<usuario>(`${this.Umusuario}/${id}`);
+    }
+
+    criaNotify(data:any): Observable<any> {
+      return this.http.post(this.criarnotificaçao, data);
+    }
+
+
     getEstoque(): Observable<usuario[]> {
       return this.http.get<usuario[]>(this.apiUrl);
     }
@@ -53,6 +68,9 @@ export class DonoserviceService {
 
     editaUmPedido(id:string, data:pedido): Observable<pedido> {
       return this.http.patch<pedido>(`${this.apiUrl3}/${id}`, data);
+    }
+    getUmPedido(id:string): Observable<any> {
+      return this.http.get<any>(`${this.apiUrl4}/${id}`);
     }
     
 }

@@ -17,11 +17,13 @@ export class EditarlancheComponent {
   nome? : string = ''
   preco? : string = ''
   descricao? : string = ''
+  quantidade? : number = 0
   
   pedido: pedido[] = [];
   nomes = '';
   precos : string = ''
   descricaos : string = ''
+  quantidades : number = 0
 
   constructor(private donoService : DonoserviceService, private router: Router, private activatedRoute: ActivatedRoute,){
     const ids =this.activatedRoute.snapshot.params['id'];
@@ -31,6 +33,7 @@ export class EditarlancheComponent {
           this.nome = cantina.nome
           this.preco = cantina.preco
           this.descricao = cantina.descricao
+          this.quantidade = cantina.quantidade
         } else {
           this.router.navigate(['/home']);
         }
@@ -44,6 +47,7 @@ export class EditarlancheComponent {
     this.nomes = form.value.nome;
     this.precos = form.value.preco;
     this.descricaos = form.value.descricao;
+    this.quantidades = form.value.quantidade;
 
 
 
@@ -51,6 +55,7 @@ export class EditarlancheComponent {
       nome: this.nomes,
       preco: this.precos,
       descricao: this.descricaos,
+      quantidade: this.quantidades,
 
     }; 
 

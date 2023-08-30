@@ -18,9 +18,22 @@ export class ResolvidosComponent {
 
   constructor(private donoService : DonoserviceService, private router: Router ){
     this.donoService.getPedidos().subscribe(
-      pedido => this.pedido = pedido
+      pedido => {
+        this.pedido = pedido
+        this.pedido.forEach(pedido => {
+          this.donoService.getUmUsuario(pedido.cliente).subscribe(
+            usuario =>{
+              pedido.cliente = usuario.nome;
+              console.log(usuario.nome);
+            });
+          console.log(pedido.cliente);
+        });
+      }
     );
+    
   }
+
+
   onInit(){
     
   }

@@ -15,6 +15,7 @@ export class CriarlancheComponent {
   nome = '';
   preco : string = ''
   descricao : string = ''
+  quantidade : number = 0
 
   constructor(private donoService : DonoserviceService, private router: Router ){
 
@@ -23,6 +24,7 @@ export class CriarlancheComponent {
     this.nome = form.value.nome;
     this.preco = form.value.preco;
     this.descricao = form.value.descricao;
+    this.quantidade = form.value.quantidade;
 
 
 
@@ -30,6 +32,7 @@ export class CriarlancheComponent {
       nome: this.nome,
       preco: this.preco,
       descricao: this.descricao,
+      quantidade: this.quantidade,
 
     }; 
 

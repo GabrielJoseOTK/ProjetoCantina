@@ -27,16 +27,22 @@
 
 </header>
 <main >
-  <a class="btn btn-dark mt-1 " style="inline: right" routerLink="/novolanche" role="button">Novo Lanche</a>
-
+  <article style="padding: 1%">
+  <div class="d-flex justify-content-end mr-3">
+    <a class="btn btn-dark mt-1 ml-auto  mr-3" routerLink="/novolanche" role="button">Novo Lanche</a>
+  </div>
+</article>
+  
 <h2 class=" text-center titulo-pagina">Cardápio </h2>  
 <div style="padding: 1em 20% 5% 20%;">
-<div class="card list-group rounded" *ngFor="let cantinas of cantina">
+<div class="card list-group rounded " style="margin-bottom:2%" *ngFor="let cantinas of cantina">
     <div class=" text-center">
     <a [routerLink]=""  class="list-group-item list-group-item-action rounded">
       Nome do Lanche: {{ cantinas.nome }}<br>
       Descrição: {{ cantinas.descricao }}<br>
+      Quantidade: {{ cantinas.quantidade }} unidades<br> 
       Preço: {{ cantinas.preco }}<br>
+      
       <a class="btn btn-success " [routerLink]="['/editalanche',cantinas._id]" role="button">Editar</a>
       <a class="btn btn-danger ms-2" [routerLink]="['/droplanche', cantinas._id]" role="button">Apagar</a>
 
