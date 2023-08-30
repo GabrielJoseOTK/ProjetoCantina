@@ -1,4 +1,4 @@
 # ProjetoCantina
 ProjetoCatina
 
-Utilize da Branch's para cada parte do projeto
+Utilize o Branch específico para cada parte do projeto
