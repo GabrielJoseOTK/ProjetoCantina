@@ -29,14 +29,25 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./cliente/pedir/pedir.module').then( m => m.PedirPageModule)
   },
-  {
-    path: 'notificacoes',
-    loadChildren: () => import('./cliente/retorno/retorno.module').then( m => m.RetornoPageModule)
-  },
+
   {
     path: 'fazerpedido/:id',
     loadChildren: () => import('./cliente/fazerpedido/fazerpedido.module').then( m => m.FazerpedidoPageModule)
+  },
+  {
+    path: 'notificacoes',
+    loadChildren: () => import('./cliente/listanotify/listanotify.module').then( m => m.ListanotifyPageModule)
+  },
+  {
+    path: 'vizualizarnotify/:id',
+    loadChildren: () => import('./cliente/vizualizarnotify/vizualizarnotify.module').then( m => m.VizualizarnotifyPageModule)
+  },
+  {
+    path: 'cancelar/:id',
+    loadChildren: () => import('./cliente/cancelar/cancelar.module').then( m => m.CancelarPageModule)
   }
+
+
 
 
 ];

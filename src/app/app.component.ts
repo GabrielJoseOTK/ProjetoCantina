@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from './login/login.service';
+import { ClienteService } from './cliente/cliente.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -8,10 +9,19 @@ import { LoginService } from './login/login.service';
 })
 export class AppComponent {
 
-  nome : string = ''
-  constructor(private router: Router, private loginService : LoginService ) {
+  id : any = []
+  constructor(private loginService: LoginService, private clienteService : ClienteService,private activatedRoute: ActivatedRoute, private router: Router ) {
 
 
+    loginService.getterlogin()
+    this.clienteService.getNumeroNotify(loginService.getterlogin()).subscribe(
+      notify =>{
+        this.id = notify
+        console.log(this.id)
+      }
 
+
+      
+    );
   }
 }

@@ -17,7 +17,7 @@
       <form #f="ngForm" (ngSubmit)="onSubmit(f)" >
         <ion-item lines="full">
           <ion-label position="floating">Quantos ?</ion-label>
-          <ion-input type="text" name="numero_de_lanche" id="numero_de_lanche" [(ngModel)]="numero_de_lanche"   placeholder="Numero" value="Texto inicial" required></ion-input>
+          <ion-input type="number" name="numero_de_lanche" id="numero_de_lanche" [(ngModel)]="numero_de_lanche"   placeholder="Numero" value="Texto inicial" required></ion-input>
         </ion-item>
         <ion-item lines="full">
           <ion-label position="floating">Informe algo do pedido</ion-label>

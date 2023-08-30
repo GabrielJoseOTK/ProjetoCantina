@@ -8,9 +8,11 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { PipeEncontrarPipe } from './dono/pipe-encontrar.pipe';
+import { EncontrarPipe } from './cliente/encontrar.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PipeEncontrarPipe, EncontrarPipe],
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 

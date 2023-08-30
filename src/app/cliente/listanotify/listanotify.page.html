@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-menu-toggle>
+        <ion-button>
+            <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+        </ion-menu-toggle>
+    </ion-buttons>
+    <ion-title>Notificações</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class='ion-padding'>
+
+  <div style="padding: 1em 20% 5% 20%;">
+
+
+
+    <div class="card list-group rounded" *ngFor="let notifys of notify">
+      <ion-card *ngIf="notifys.status != 'visualizado'">
+
+
+        
+        <ion-card-content>
+        <div class=" text-center" >
+          Descrição: {{ notifys.pedido }}<br>
+          Status: {{ notifys.status }}<br>
+
+          <ion-button [routerLink]="['/vizualizarnotify',notifys._id]" class="ion-margin-top" expand="block" color="primary">
+            visualizar
+          </ion-button>
+      
+    <!--['/home', cliente._id]-->
+  </div>
+  </ion-card-content>
+</ion-card>
+
+    </div>
+    </div>
+</ion-content>

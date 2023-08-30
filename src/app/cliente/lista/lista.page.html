@@ -19,12 +19,11 @@
 <div style="padding: 1em 20% 5% 20%;">
     <div class="card list-group rounded" *ngFor="let pedidos of pedido">
         <div class=" text-center">
-          Nome do Lanche: {{ pedidos.cliente }}<br>
           Descrição: {{ pedidos.descricao }}<br>
           Status: {{ pedidos.status }}<br>
 
   
-          <ion-button [routerLink]="['/fazerpedido',pedidos.cliente]" class="ion-margin-top" expand="block" color="primary">
+          <ion-button [routerLink]="['/cancelar',pedidos._id]" class="ion-margin-top" expand="block" color="primary">
             Cancelar
           </ion-button>
       

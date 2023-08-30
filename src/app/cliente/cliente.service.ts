@@ -7,6 +7,7 @@ import { usuario } from './usuario';
 import { pedido } from './pedido';
 import { cantina } from './cantina';
 import { teste } from './teste';
+import { notify } from './notify';
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +20,15 @@ export class ClienteService {
   private apiUrl3 = 'http://localhost:3000/pedido/atualizarpedido';
   private apiaddpedido = 'http://localhost:3000/pedido/inserir';
   private apiclientepedido = 'http://localhost:3000/pedido/pedidosespecificos';
+  private deletarpedido = 'http://localhost:3000/pedido/cancelarpedido';
+  
   
   private usuarioapi  = 'http://localhost:3000/usuario/login_unico';
   private unicousuario  = 'http://localhost:3000/usuario/encontrar';
 
+  private notifyUnica  = 'http://localhost:3000/notify/atualizarnoti';
+  private listaNotify  = 'http://localhost:3000/notify/pelonome';
+  private numeroNotify  = 'http://localhost:3000/notify/numero_notify';
 
   private apicantina = 'http://localhost:3000/cantina/cardapio';
   private apiaddlanche = 'http://localhost:3000/cantina/create';
@@ -81,4 +87,26 @@ export class ClienteService {
   getUmUsuario(id:string): Observable<usuario> {
     return this.http.get<usuario>(`${this.unicousuario}/${id}`);
   }
+
+
+
+  deletarPedido(id:string): Observable<pedido> {
+    return this.http.get<pedido>(`${this.deletarpedido}/${id}`);
+  }
+
+
+
+
+  getNumeroNotify(id:string): Observable<string> {
+    return this.http.get<string>(`${this.notifyUnica}/${id}/naovisualizado`);
+  }
+  editaUmNotify(id:string, status:string): Observable<notify> {
+    return this.http.patch<notify>(`${this.notifyUnica}/${id}`, status);
+  }
+  getListaNotify(idcliente:string): Observable<notify[]> {
+    return this.http.get<notify[]>(`${this.listaNotify}/${idcliente}`);
+  }
+
+
+
 }

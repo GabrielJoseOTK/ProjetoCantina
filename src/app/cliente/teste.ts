@@ -1,13 +1,13 @@
 export class teste{
 
-    cliente?:string
+    _id?:string
     status?:string
 
 
 
     constructor(cliente:string,status:string){
 
-        this.cliente = cliente,
+        this._id = cliente,
 
         this.status= status
     }

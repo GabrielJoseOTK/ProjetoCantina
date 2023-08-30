@@ -28,7 +28,7 @@ export class FazerpedidoPage {
 
   nomedocliente : any = ''
   nomedolanche : any = ''
-  numero_de_lanche : string = ''
+  numero_de_lanche : number = 0
   descricao : string = ''
   status : string = ''
 
@@ -69,7 +69,7 @@ export class FazerpedidoPage {
 
     let pedido: pedido = {
 
-      cliente: this.nomedocliente,
+      cliente: this.loginService.getterlogin(),
       descricao: this.numero_de_lanche+' de '+ this.nomedolanche,
       status : "Em andamento"
 
