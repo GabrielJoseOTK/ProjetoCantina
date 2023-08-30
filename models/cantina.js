@@ -15,6 +15,9 @@ const cantinaSchema = new mongoose.Schema({
   descricao: {
   type: String
   },
+  quantidade: {
+    type: Number
+  },
   convertRule: Number
   });
 

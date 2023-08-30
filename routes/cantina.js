@@ -3,13 +3,14 @@ const router = express.Router();
 const cantina = require('../models/cantina');
 
 router.post('/inserir', async (req, res) => {
-  const { nome, preco, descricao} = req.body;
+  const { nome, preco, descricao,quantidade} = req.body;
 
   try {
     const novacantina = await cantina.create({
       nome,
       preco,
-      descricao
+      descricao,
+      quantidade
 
     });
 
@@ -20,7 +21,7 @@ router.post('/inserir', async (req, res) => {
   }
 });
 router.post('/create', async (req, res) => {
-  const { nome, preco, descricao} = req.body;
+  const { nome, preco, descricao,quantidade} = req.body;
   try {
     const cardapio = new cantina(req.body);
     await cardapio.save();
@@ -39,14 +40,7 @@ router.get('/cardapio', async (req, res) => {
   }
 });
 
-router.get('/cardapio', async (req, res) => {
-  try {
-    const cantinas = await cantina.find({});
-    res.send(cantinas);
-  } catch (error) {
-    res.status(500).send();
-  }
-});
+
 
 
 // Rota para buscar uma receita específica pelo seu ID

@@ -146,9 +146,32 @@ router.delete('/deletarpedido/:id', async (req, res) => {
   }
 });
 
+router.get('/cancelarpedido/:id', async (req, res) => {
+  const _id = req.params.id;
+
+  try {
+    const noti = await pedido.findById(_id);
+    noti.status = "Cancelado";
+    noti.save();
+
+    if (!noti) {
+      return res.status(404).send();
+    }
+
+    res.send(noti);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
+
+
+
+
 router.post('/pedidosespecificos', async (req, res) => {
   try {
-    const { status,cliente } = req.body;
+    const cliente  = req.body._id;
+    const { status } = req.body;
     const pedidos = await pedido.find({ status, cliente });
     if (!pedidos) {
       return res.send('Não há');
