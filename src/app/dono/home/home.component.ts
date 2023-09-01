@@ -11,17 +11,28 @@ import { LoginService } from 'src/app/login/login.service';
 })
 export class HomeComponent {
 
-  pedido: pedido[] = [];
+  pedido?: pedido[] = [];
   ok = '';
   nome : string = ''
   senha : string = ''
   teste : boolean = false
   valor = ""
+  idcliente = [] 
   
 
   constructor(private donoService : DonoserviceService, private router: Router, private loginService: LoginService,){
     this.donoService.getPedidos().subscribe(
-      pedido => this.pedido = pedido
+      pedidos => {
+        this.pedido = pedidos;
+        this.pedido.forEach(pedido => {
+          this.donoService.getUmUsuario(pedido.cliente).subscribe(
+            cliente => {
+              pedido.nome = cliente.nome;
+            }
+          );
+        });
+        this.pedido = pedidos;
+      }
     );
     this.valor = loginService.getterlogin();
 

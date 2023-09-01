@@ -1,7 +1,7 @@
 <main class="p-4"style="margin-left: 35%; margin-right: 35%">
     <h2 class="titulo-pagina">Login</h2>
     <div class="d-flex justify-content-end mb-3">
-      <a routerLink="/" class="btn btn-primary">Limpar</a>
+      <a routerLink="javascript:void(0)" class="btn btn-primary" onclick="doFunction();">Limpar</a>
     </div>
   
     <article class="card cartao cartao--destaque destaque-video mx-auto my-4">
@@ -22,6 +22,9 @@
             </div>
             <div *ngIf="teste" class="text-danger mt-3">
               Login Incorreto
+            </div>
+            <div *ngIf="testeteste" class="text-danger mt-3">
+              Parece que você não é um funcionario
             </div>
           </form>
         </div>

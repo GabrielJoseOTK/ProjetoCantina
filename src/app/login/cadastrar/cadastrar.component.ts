@@ -13,7 +13,8 @@ export class CadastrarComponent {
   nome : string = ''
   senha : string = ''
   nivel : string = ''
-
+  teste1 : boolean = false
+  teste2 : boolean = false
   constructor(private loginService: LoginService, private router: Router ) {}
 
 
@@ -30,13 +31,24 @@ export class CadastrarComponent {
       nivel:this.nivel
 
     }; 
-
-    let serve = this.loginService.create(usuario).subscribe(
-      usuario => {
-        console.log(usuario);
-        this.router.navigate(['/']);
-      }
-    )
+    if(this.nome.length < 1)
+    {
+      this.teste1 = true
+    }
+    
+    else if(this.senha.length < 8)
+    {
+      this.teste2 = true
+    }
+    else
+    {
+      let serve = this.loginService.create(usuario).subscribe(
+        usuario => {
+          console.log(usuario);
+          this.router.navigate(['/']);
+        }
+      )
+    }
 
   }
 }

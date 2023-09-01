@@ -1,10 +1,8 @@
 <main class="principal p-4" style="margin-left: 35%; margin-right: 35%">
     <h2 class="titulo-pagina">Cadastro</h2>
     <div class="d-flex justify-content-end mb-3">
-      <a routerLink="/" class="btn btn-primary">Voltar</a>
+      <a routerLink="javascript:void(0)" class="btn btn-primary" onclick="doFunction();">Limpar</a>
     </div>
-  
-    <article class="card cartao cartao--destaque destaque-video"></article>
   
     <article class="card cartao cartao--destaque destaque-video mx-auto my-4">
       <div class="card-body main-login">
@@ -14,12 +12,20 @@
               <label for="nome">Nome</label>
               <input type="text" name="nome" id="nome" [(ngModel)]="nome" required placeholder="Nome" class="form-control">
             </div>
+            <div *ngIf="teste1" class="text-danger mt-3">
+              Nome muito curto
+            </div>
             <div class="form-group">
               <label for="senha">Senha</label>
               <input type="password" name="senha" id="senha" [(ngModel)]="senha" required placeholder="Senha" class="form-control">
             </div>
+            <div *ngIf="teste2" class="text-danger mt-3">
+              Senha muito curta, mínimo de 8 digitos
+            </div>
             <div class="text-center mt-3">
+              
               <button class="btn btn-primary me-3" type="submit">Cadastrar</button>
+              <a routerLink="/" class="btn btn-primary">Voltar</a>
             </div>
           </form>
         </div>

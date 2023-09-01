@@ -4,6 +4,7 @@ export class pedido{
     cliente?:string
     descricao?:string
     status?:string
+    nome?:string
 
 
     constructor(_id:string,cliente:string,descricao:string,status:string){

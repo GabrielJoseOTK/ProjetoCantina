@@ -16,6 +16,7 @@ export class LogarComponent {
   nome : string = ''
   senha : string = ''
   teste : boolean = false
+  testeteste : boolean = false
 
   constructor(private loginService: LoginService, private router: Router ) {
     this.loginService.getUsuario().subscribe(
@@ -38,8 +39,13 @@ export class LogarComponent {
     this.loginService.getlogin(usuario).subscribe(
       usuario => {
         console.log(usuario);
-        this.loginService.setterlogin(usuario.nome);
-        this.router.navigate(['/home']);
+        if(usuario.nivel == "dono" || usuario.nivel == "Funcionario"){
+          this.loginService.setterlogin(usuario.nome);
+          this.router.navigate(['/home']);
+        }else{
+          this.testeteste = true
+        }
+        
         
       },
       (teste) => {

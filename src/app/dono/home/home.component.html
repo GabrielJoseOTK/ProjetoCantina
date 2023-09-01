@@ -33,7 +33,7 @@
 <div class="card list-group rounded" *ngFor="let pedidos of pedido">
     <div class=" text-center" *ngIf="pedidos.status == 'Em andamento'">
     <a [routerLink]="" class="list-group-item list-group-item-action rounded">
-      Nome Cliente: {{ pedidos.cliente }}<br>
+      Nome Cliente: {{ pedidos.nome }}<br>
       Pedido: {{ pedidos.descricao }}<br>
       Status: {{ pedidos.status }}<br>
       <a class="btn btn-success " [routerLink]="['/entregar',pedidos._id]" role="button">Entregar</a>
