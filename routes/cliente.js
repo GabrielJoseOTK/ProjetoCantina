@@ -39,7 +39,7 @@ router.post('/create', async (req, res) => {
   try {
     const clientes = new cliente(req.body);
     await clientes.save();
-    res.status;(201).send(clientes);
+    res.status(201).send(clientes);
   } catch (error) {
     res.status(400).send(error);
   }
