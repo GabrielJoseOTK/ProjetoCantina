@@ -35,11 +35,11 @@ router.post('/inserir', async (req, res) => {
   }
 });
 router.post('/create', async (req, res) => {
-  const { nome, RA} = req.body;
+  const {nome, RA} = req.body;
   try {
     const clientes = new cliente(req.body);
     await clientes.save();
-    res.status(201).send(clientes);
+    res.status;(201).send(clientes);
   } catch (error) {
     res.status(400).send(error);
   }
