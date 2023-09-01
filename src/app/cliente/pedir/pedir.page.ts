@@ -16,7 +16,12 @@ export class PedirPage implements OnInit {
 
   ngOnInit() {
     this.clienteService.getCardapio().subscribe(
-      cantina => this.cantina = cantina
+      cantina => {
+
+              this.cantina = cantina
+        
+      }
+      
     );
   }
 

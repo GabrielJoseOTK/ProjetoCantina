@@ -22,7 +22,6 @@ export class ClienteService {
   private apiclientepedido = 'http://localhost:3000/pedido/pedidosespecificos';
   private deletarpedido = 'http://localhost:3000/pedido/cancelarpedido';
   
-  
   private usuarioapi  = 'http://localhost:3000/usuario/login_unico';
   private unicousuario  = 'http://localhost:3000/usuario/encontrar';
 

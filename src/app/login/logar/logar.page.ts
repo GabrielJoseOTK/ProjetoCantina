@@ -18,6 +18,7 @@ export class LogarPage  {
   nome : string = ''
   senha : string = ''
   teste : boolean = false
+  testeteste : boolean = false
   constructor(private loginService: LoginService, private router: Router ) {
     this.loginService.getUsuario().subscribe(
       usuarios => this.usuarios = usuarios
@@ -40,8 +41,13 @@ export class LogarPage  {
     this.loginService.getlogin(usuario).subscribe(
       usuario => {
         console.log(usuario._id);
-        this.loginService.setterlogin(usuario._id);
-        this.router.navigate(['/home']);
+        if(usuario.nivel == "cliente"){
+          this.loginService.setterlogin(usuario._id);
+          this.router.navigate(['/home']);
+        }else{
+          this.testeteste = true
+        }
+        
         
       },
       (teste) => {

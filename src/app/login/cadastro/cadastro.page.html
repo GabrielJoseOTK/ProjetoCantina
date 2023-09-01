@@ -18,10 +18,21 @@
       <ion-item lines="full">
         <ion-label position="floating">Nome</ion-label>
         <ion-input type="text" name="nome" id="nome" [(ngModel)]="nome"   placeholder="Nome"  required></ion-input>
+        <ion-row>
+          <ion-col *ngIf="teste1" style="color:red">
+            Nome muito curto
+          </ion-col>
+        </ion-row>
       </ion-item>
+
       <ion-item lines="full">
         <ion-label position="floating">Senha</ion-label>
         <ion-input type="senha" name="senha" id="senha" [(ngModel)]="senha" required placeholder="Senha" required></ion-input>
+        <ion-row>
+          <ion-col *ngIf="teste2" style="color:red">
+            Senha muito curta, mínimo de 8 digitos
+          </ion-col>
+        </ion-row>
       </ion-item>
 
       <!-- Radio buttons -->

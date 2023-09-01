@@ -75,7 +75,11 @@
             <ion-button routerLink="/home" class="ion-margin-top" expand="block" color="primary">
               Voltar
             </ion-button>
-            
+            <ion-row>
+              <ion-col *ngIf="quantidadedisponivel" style="color:red">
+                Sentimos muito, quantidade disponível é menor que a requirida
+              </ion-col>
+            </ion-row>
           </ion-col>
         </ion-row>
       </form>

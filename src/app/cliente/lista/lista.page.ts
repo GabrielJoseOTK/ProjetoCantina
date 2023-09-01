@@ -81,7 +81,7 @@ export class ListaPage {
               catch(er){
                 console.log(er)
               }
-              this.atualizarInformacoesOrigem();
+              
             }
           )
           } else {

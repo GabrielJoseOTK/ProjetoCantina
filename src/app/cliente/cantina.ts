@@ -1,10 +1,10 @@
 export class cantina{
 
     _id?:string
-    nome:string
-    preco:string
-    descricao:string
-    quantidade?:number
+    nome?:string
+    preco?:string
+    descricao?:string
+    quantidade:number 
 
 
     constructor(_id:string,nome:string,preco:string,descricao:string,quantidade:number){

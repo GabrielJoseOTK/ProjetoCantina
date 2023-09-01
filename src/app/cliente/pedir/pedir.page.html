@@ -15,10 +15,12 @@
   
   <div style="padding: 1em 20% 5% 20%;">
   <div class="card list-group rounded" *ngFor="let cantinas of cantina">
+    <div *ngIf="cantinas && cantinas.quantidade > 0">
       <div class=" text-center">
         Nome do Lanche: {{ cantinas.nome }}<br>
         Descrição: {{ cantinas.descricao }}<br>
         Preço: {{ cantinas.preco }}<br>
+        Unidades: {{ cantinas.quantidade }}<br>
 
         <ion-button [routerLink]="['/fazerpedido',cantinas._id]" class="ion-margin-top" expand="block" color="primary">
           Fazer Pedido
@@ -26,6 +28,7 @@
     
   <!--['/home', cliente._id]-->
       
+      </div>
     </div>
   </div>
   </div>

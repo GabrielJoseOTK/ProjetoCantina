@@ -32,6 +32,10 @@ export class FazerpedidoPage {
   descricao : string = ''
   status : string = ''
 
+  quantidadedisponivel: boolean = false
+
+  lancheeditavel? : cantina;
+
   constructor(private loginService: LoginService,private activatedRoute: ActivatedRoute, private router: Router, private clienteService : ClienteService ) {
     const ids =this.activatedRoute.snapshot.params['id'];
     const meunome = this.loginService.getterlogin();
@@ -59,9 +63,10 @@ export class FazerpedidoPage {
 
    }
    onSubmit(form: any){
+    const ids =this.activatedRoute.snapshot.params['id'];
     this.numero_de_lanche = form.value.numero_de_lanche;
     this.descricao = form.value.descricao;
-
+    
 
 
     this.nomedolanche = this.lanchenome;
@@ -76,14 +81,57 @@ export class FazerpedidoPage {
       
     }; 
 
-    this.clienteService.criaPedido(pedido).subscribe(
-      pedido => {
 
-        this.router.navigate(['/home']);
-        
-      },
+    
+    
 
-    )
+    if(this.numero_de_lanche >=1){
+      this.clienteService.criaPedido(pedido).subscribe(
+        pedido => {
+          this.clienteService.getUmLanche(ids).subscribe(
+            cantina =>{
+              this.lancheeditavel = cantina
+
+              if(this.lancheeditavel.quantidade){
+                if(this.lancheeditavel.quantidade >=this.numero_de_lanche){
+
+                
+                  this.lancheeditavel.quantidade -= this.numero_de_lanche;
+                  
+                  let lanche: cantina = {
+                    nome:this.lancheeditavel.nome,
+                    preco: this.lancheeditavel.preco,
+                    descricao: this.lancheeditavel.descricao,
+                    quantidade: this.lancheeditavel.quantidade,
+              
+                  }; 
+                  this.clienteService.editaUmLanche(ids, lanche).subscribe(
+                    lanche => {
+                      console.log(lanche);
+                      this.router.navigate(['/home']);
+                    })
+                  
+                }
+                else
+                {
+                  this.quantidadedisponivel = true
+                  console.log("quantidade")
+                  
+                }
+              }else{
+                console.log("ERRO")
+              }
+              
+            }
+          )
+          
+          
+        },
+
+      )
+    }else{
+      console.log("ERROR")
+    }
 
   }
 

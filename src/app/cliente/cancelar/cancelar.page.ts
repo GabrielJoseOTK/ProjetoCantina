@@ -3,6 +3,8 @@ import { LoginService } from 'src/app/login/login.service';
 import { ClienteService } from '../cliente.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonRouterOutlet, NavController } from '@ionic/angular';
+import { usuario } from '../usuario';
+import { pedido } from '../pedido';
 
 @Component({
   selector: 'app-cancelar',
@@ -10,7 +12,13 @@ import { IonRouterOutlet, NavController } from '@ionic/angular';
   styleUrls: ['./cancelar.page.scss'],
 })
 export class CancelarPage  {
+  usuarios: usuario[] = [];
+  exemplo :string = ''
 
+  pedido : pedido[] = [];
+  nome : string = ''
+  senha : string = ''
+  usuarionome? : string = ''
   constructor(
     
     private loginService: LoginService,
@@ -27,23 +35,14 @@ export class CancelarPage  {
         // Redirecionar para a página de origem após atualizar as informações
         this.routerOutlet.pop().then(() => {
           // Executar ação de atualização das informações aqui
-          this.atualizarInformacoesOrigem();
+          
         });
       }
     )
   }
 
 
-  ionViewWillEnter() {
-    if (this.routerOutlet && this.routerOutlet.canGoBack()) {
-    // Executar ação de atualização das informações aqui
-    this.atualizarInformacoesOrigem();
-    }
-    }
-    
-    atualizarInformacoesOrigem() {
-
-    }
+  
     
 
 }
